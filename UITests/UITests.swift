@@ -10,27 +10,9 @@ import XCTest
 
 final class UITests: XCTestCase {
     func testAddDataToHealthApp() throws {
-        do {
-            let app = XCUIApplication()
-            app.launch()
-            
-            try exitAppAndOpenHealth(.electrocardiograms)
-            try exitAppAndOpenHealth(.steps)
-            try exitAppAndOpenHealth(.pushes)
-            try exitAppAndOpenHealth(.restingHeartRate)
-            try exitAppAndOpenHealth(.activeEnergy)
-        } catch {
-            let screenshot = XCUIScreen.main.screenshot()
-            let fullScreenshotAttachment = XCTAttachment(screenshot: screenshot)
-            fullScreenshotAttachment.lifetime = .keepAlways
-            
-            add(fullScreenshotAttachment)
-            throw error
-        }
-    }
-    
-    
-    private func exitAppAndOpenHealth(_ healthDataType: HealthDataType) throws {
+        let app = XCUIApplication()
+        app.launch()
+        
         XCUIDevice.shared.press(.home)
         
         addUIInterruptionMonitor(withDescription: "System Dialog") { alert in
@@ -55,35 +37,15 @@ final class UITests: XCTestCase {
         }
         
         guard healthApp.tabBars["Tab Bar"].buttons["Browse"].waitForExistence(timeout: 3) else {
-            XCTFail("Failed to identify the Add Data Button: \(healthApp.staticTexts.allElementsBoundByIndex)")
+            XCTFail("Failed to find the Browse button in the Tab Bar: \(healthApp.staticTexts.allElementsBoundByIndex)")
             throw XCTestError(.failureWhileWaiting)
         }
         
         healthApp.tabBars["Tab Bar"].buttons["Browse"].tap()
         
-        try healthDataType.navigateToElement()
-        
-        guard healthApp.navigationBars.firstMatch.buttons["Add Data"].waitForExistence(timeout: 3) else {
-            XCTFail("Failed to identify the Add Data Button: \(healthApp.buttons.allElementsBoundByIndex)")
-            XCTFail("Failed to identify the Add Data Button: \(healthApp.staticTexts.allElementsBoundByIndex)")
-            throw XCTestError(.failureWhileWaiting)
-        }
-        
-        healthApp.navigationBars.firstMatch.buttons["Add Data"].tap()
-        
-        healthDataType.addData()
-        
-        guard healthApp.navigationBars.firstMatch.buttons["Add"].waitForExistence(timeout: 3) else {
-            XCTFail("Failed to identify the Add button: \(healthApp.buttons.allElementsBoundByIndex)")
-            XCTFail("Failed to identify the Add button: \(healthApp.staticTexts.allElementsBoundByIndex)")
-            throw XCTestError(.failureWhileWaiting)
-        }
-        
-        healthApp.navigationBars.firstMatch.buttons["Add"].tap()
-        
-        healthApp.terminate()
-        
-        let testApp = XCUIApplication()
-        testApp.activate()
+        let screenshot = XCUIScreen.main.screenshot()
+        let fullScreenshotAttachment = XCTAttachment(screenshot: screenshot)
+        fullScreenshotAttachment.lifetime = .keepAlways
+        add(fullScreenshotAttachment)
     }
 }

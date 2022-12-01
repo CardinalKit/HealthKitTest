@@ -10,7 +10,6 @@
 		2F306BB529231CFD000D774F /* TestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F306BB429231CFD000D774F /* TestApp.swift */; };
 		2F306BB929231CFE000D774F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F306BB829231CFE000D774F /* Assets.xcassets */; };
 		2F306BD029231CFE000D774F /* UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F306BCF29231CFE000D774F /* UITests.swift */; };
-		2F306BD229231CFE000D774F /* HealthDataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F306BD129231CFE000D774F /* HealthDataType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,7 +28,6 @@
 		2F306BB829231CFE000D774F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F306BCB29231CFE000D774F /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F306BCF29231CFE000D774F /* UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITests.swift; sourceTree = "<group>"; };
-		2F306BD129231CFE000D774F /* HealthDataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				2F306BCF29231CFE000D774F /* UITests.swift */,
-				2F306BD129231CFE000D774F /* HealthDataType.swift */,
 			);
 			path = UITests;
 			sourceTree = "<group>";
@@ -194,7 +191,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F306BD029231CFE000D774F /* UITests.swift in Sources */,
-				2F306BD229231CFE000D774F /* HealthDataType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
